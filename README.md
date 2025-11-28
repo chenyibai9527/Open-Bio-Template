@@ -172,16 +172,29 @@ on:
   pull_request:
     branches: [ main ]
 
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow only one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
@@ -193,18 +206,26 @@ jobs:
       run: npm run build
     
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
+        publish_branch: gh-pages
+        force_orphan: true
 ```
 
-4. Commit the workflow file
-5. Go to **Actions** tab and wait for the workflow to complete
-6. **Done!** Your site will be live at `https://yourusername.github.io/your-repo-name`
+4. **Important:** Go to your repository **Settings** → **Actions** → **General** → **Workflow permissions** and select **Read and write permissions**
+5. Commit the workflow file
+6. Go to **Actions** tab and wait for the workflow to complete
+7. **Done!** Your site will be live at `https://yourusername.github.io/your-repo-name`
 
 **Pro tip:** GitHub Pages automatically rebuilds whenever you push changes to the main branch!
+
+**Troubleshooting:** If you still get permission errors, make sure:
+1. Go to repository **Settings** → **Actions** → **General** → **Workflow permissions**
+2. Select **Read and write permissions** and **Allow GitHub Actions to create and approve pull requests**
+3. If problems persist, try the [alternative workflow](.github/workflows/deploy-alternative.yml) using GitHub's official actions
 
 </details>
 
@@ -386,16 +407,29 @@ on:
   pull_request:
     branches: [ main ]
 
+# 设置 GITHUB_TOKEN 权限，允许部署到 GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# 允许并发部署
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     
     steps:
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
     - name: Setup Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
         node-version: '18'
         cache: 'npm'
@@ -407,18 +441,26 @@ jobs:
       run: npm run build
     
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
+      uses: peaceiris/actions-gh-pages@v4
       if: github.ref == 'refs/heads/main'
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./dist
+        publish_branch: gh-pages
+        force_orphan: true
 ```
 
-4. 提交工作流文件
-5. 进入 **Actions（操作）** 标签页，等待工作流完成
-6. **完成！** 你的网站将在 `https://你的用户名.github.io/你的仓库名` 上线
+4. **重要：** 进入仓库 **Settings（设置）** → **Actions（操作）** → **General（常规）** → **Workflow permissions（工作流权限）** 并选择 **Read and write permissions（读写权限）**
+5. 提交工作流文件
+6. 进入 **Actions（操作）** 标签页，等待工作流完成
+7. **完成！** 你的网站将在 `https://你的用户名.github.io/你的仓库名` 上线
 
 **专业提示：** 每当你推送更改到主分支时，GitHub Pages 会自动重新构建！
+
+**故障排除：** 如果你仍然遇到权限错误，请确保：
+1. 进入仓库 **Settings（设置）** → **Actions（操作）** → **General（常规）** → **Workflow permissions（工作流权限）**
+2. 选择 **Read and write permissions（读写权限）** 和 **Allow GitHub Actions to create and approve pull requests（允许 GitHub Actions 创建和批准拉取请求）**
+3. 如果问题仍然存在，尝试使用 [替代工作流](.github/workflows/deploy-alternative.yml)（使用 GitHub 官方 actions）
 
 </details>
 
