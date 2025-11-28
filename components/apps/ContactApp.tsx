@@ -215,7 +215,7 @@ const ContactApp: React.FC<ContactAppProps> = ({ theme = 'macos' }) => {
                </div>
             </div>
             <div className="italic opacity-70">
-               Sent from ybio.dev
+               Sent from open-bio-template
             </div>
          </div>
       </div>

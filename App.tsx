@@ -12,7 +12,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     // Check local storage for persistent theme
-    const savedTheme = localStorage.getItem('ybio_theme') as Theme;
+    const savedTheme = localStorage.getItem('open_bio_theme') as Theme;
     if (savedTheme) {
       setSelectedTheme(savedTheme);
       setStage('desktop'); // Skip boot sequence if returning
@@ -21,7 +21,7 @@ const App: React.FC = () => {
 
   const handleThemeSelect = (theme: Theme) => {
     setSelectedTheme(theme);
-    localStorage.setItem('ybio_theme', theme);
+    localStorage.setItem('open_bio_theme', theme);
     setStage('booting');
   };
 
@@ -31,7 +31,7 @@ const App: React.FC = () => {
 
   const handleLock = () => {
     // "Log Out" action
-    localStorage.removeItem('ybio_theme'); // Clear persistence
+    localStorage.removeItem('open_bio_theme'); // Clear persistence
     setStage('selection');
   };
 
