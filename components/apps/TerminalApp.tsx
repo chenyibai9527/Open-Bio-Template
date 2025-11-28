@@ -32,7 +32,7 @@ const fileSystem: Record<string, FileSystemItem> = {
         type: 'file', 
         content: '# User (Dev)\n\n> Developer building cool things.\n\nWelcome to my terminal.' 
       },
-      { name: 'contact.info', type: 'file', content: 'Email: hello@example.com\nGithub: github.com/example' },
+      { name: 'contact.info', type: 'file', content: 'Email: hello@example.com\nGithub: github.com/chenyibai9527/Open-Bio-Template' },
       { name: '.bashrc', type: 'file', content: 'export PATH=$PATH:/bin/openbio\nalias ll="ls -la"' },
     ]
   }

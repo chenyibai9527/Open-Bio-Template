@@ -10,7 +10,7 @@ export const userProfile = {
   quote: "Hello, World!",
   email: "hello@example.com",
   socials: [
-    { name: "GitHub", url: "https://github.com", icon: Github },
+    { name: "GitHub", url: "https://github.com/chenyibai9527/Open-Bio-Template", icon: Github },
     { name: "Twitter", url: "https://twitter.com", icon: Twitter }
   ],
   status: [

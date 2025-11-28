@@ -28,7 +28,7 @@
 <table>
 <tr>
 <td align="center" width="33%">
-<a href="https://vercel.com/new/clone?repository-url=https://github.com/chenyibai9527/open-bio-template">
+<a href="https://vercel.com/new/clone?repository-url=https://github.com/chenyibai9527/Open-Bio-Template">
 <img src="https://vercel.com/button" alt="Deploy with Vercel"/>
 </a>
 <br/>
@@ -46,7 +46,7 @@
 <sub>Super Fast</sub>
 </td>
 <td align="center" width="33%">
-<a href="https://app.netlify.com/start/deploy?repository=https://github.com/chenyibai9527/open-bio-template">
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/chenyibai9527/Open-Bio-Template">
 <img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"/>
 </a>
 <br/>
@@ -82,7 +82,7 @@
 
 Click the button below to create your own copy:
 
-[![Use This Template](https://img.shields.io/badge/Use%20This%20Template-2ea44f?style=for-the-badge)](https://github.com/chenyibai9527/open-bio-template/generate)
+[![Use This Template](https://img.shields.io/badge/Use%20This%20Template-2ea44f?style=for-the-badge)](https://github.com/chenyibai9527/Open-Bio-Template/generate)
 
 Or click the green **"Use this template"** button at the top of this page.
 
@@ -111,7 +111,7 @@ Choose your favorite platform:
 <details>
 <summary><b>Option A: Vercel (Recommended - Easiest)</b></summary>
 
-1. Click here: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/chenyibai9527/open-bio-template)
+1. Click here: [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/chenyibai9527/Open-Bio-Template)
 2. Sign in with GitHub
 3. Click **"Deploy"**
 4. Wait 2 minutes
@@ -139,7 +139,7 @@ Choose your favorite platform:
 <details>
 <summary><b>Option C: Netlify (Also Great)</b></summary>
 
-1. Click here: [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chenyibai9527/open-bio-template)
+1. Click here: [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chenyibai9527/Open-Bio-Template)
 2. Sign in with GitHub
 3. Click **"Connect to GitHub"**
 4. Click **"Deploy site"**
@@ -207,7 +207,7 @@ Yes! All platforms support custom domains:
 
 ```bash
 # Clone and install
-git clone https://github.com/chenyibai9527/open-bio-template.git
+git clone https://github.com/chenyibai9527/Open-Bio-Template.git
 cd open-bio-template
 npm install
 
@@ -243,7 +243,7 @@ npm run build
 
 点击下方按钮创建你自己的副本：
 
-[![使用此模板](https://img.shields.io/badge/%E4%BD%BF%E7%94%A8%E6%AD%A4%E6%A8%A1%E6%9D%BF-2ea44f?style=for-the-badge)](https://github.com/chenyibai9527/open-bio-template/generate)
+[![使用此模板](https://img.shields.io/badge/%E4%BD%BF%E7%94%A8%E6%AD%A4%E6%A8%A1%E6%9D%BF-2ea44f?style=for-the-badge)](https://github.com/chenyibai9527/Open-Bio-Template/generate)
 
 或点击页面顶部的绿色 **"Use this template"** 按钮。
 
@@ -272,7 +272,7 @@ export const userProfile = {
 <details>
 <summary><b>方案 A：Vercel（推荐 - 最简单）</b></summary>
 
-1. 点击这里：[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/chenyibai9527/open-bio-template)
+1. 点击这里：[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/chenyibai9527/Open-Bio-Template)
 2. 使用 GitHub 账号登录
 3. 点击 **"Deploy"**（部署）
 4. 等待 2 分钟
@@ -300,7 +300,7 @@ export const userProfile = {
 <details>
 <summary><b>方案 C：Netlify（也很棒）</b></summary>
 
-1. 点击这里：[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chenyibai9527/open-bio-template)
+1. 点击这里：[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/chenyibai9527/Open-Bio-Template)
 2. 使用 GitHub 账号登录
 3. 点击 **"Connect to GitHub"**（连接到 GitHub）
 4. 点击 **"Deploy site"**（部署网站）
@@ -368,7 +368,7 @@ export const userProfile = {
 
 ```bash
 # 克隆并安装
-git clone https://github.com/chenyibai9527/open-bio-template.git
+git clone https://github.com/chenyibai9527/Open-Bio-Template.git
 cd open-bio-template
 npm install
 
@@ -389,9 +389,9 @@ npm run build
 
 Made with love by the Open Source Community
 
-[![GitHub stars](https://img.shields.io/github/stars/chenyibai9527/open-bio-template?style=social)](https://github.com/chenyibai9527/open-bio-template)
-[![GitHub forks](https://img.shields.io/github/forks/chenyibai9527/open-bio-template?style=social)](https://github.com/chenyibai9527/open-bio-template/fork)
+[![GitHub stars](https://img.shields.io/github/stars/chenyibai9527/Open-Bio-Template?style=social)](https://github.com/chenyibai9527/Open-Bio-Template)
+[![GitHub forks](https://img.shields.io/github/forks/chenyibai9527/Open-Bio-Template?style=social)](https://github.com/chenyibai9527/Open-Bio-Template/fork)
 
-[Report Bug](https://github.com/chenyibai9527/open-bio-template/issues) · [Request Feature](https://github.com/chenyibai9527/open-bio-template/issues)
+[Report Bug](https://github.com/chenyibai9527/Open-Bio-Template/issues) · [Request Feature](https://github.com/chenyibai9527/Open-Bio-Template/issues)
 
 </div>
