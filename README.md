@@ -54,6 +54,15 @@
 <br/>
 <sub>Easy Setup</sub>
 </td>
+<td align="center" width="33%">
+<a href="https://pages.github.com/">
+<img src="https://img.shields.io/badge/Deploy%20to-GitHub%20Pages-24292e?style=for-the-badge&logo=github&logoColor=white" alt="Deploy to GitHub Pages"/>
+</a>
+<br/>
+<b>GitHub Pages</b>
+<br/>
+<sub>Direct Integration</sub>
+</td>
 </tr>
 </table>
 
@@ -147,6 +156,58 @@ Choose your favorite platform:
 
 </details>
 
+<details>
+<summary><b>Option D: GitHub Pages (Direct Integration)</b></summary>
+
+1. Go to your repository **Settings** → **Pages**
+2. Under **Source**, select **GitHub Actions**
+3. Create `.github/workflows/deploy.yml` file in your repository:
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build
+      run: npm run build
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+```
+
+4. Commit the workflow file
+5. Go to **Actions** tab and wait for the workflow to complete
+6. **Done!** Your site will be live at `https://yourusername.github.io/your-repo-name`
+
+**Pro tip:** GitHub Pages automatically rebuilds whenever you push changes to the main branch!
+
+</details>
+
 ---
 
 ### Pro Tips
@@ -158,6 +219,7 @@ Choose your favorite platform:
 | **Add projects** | Add items to the `projects` array |
 | **Custom domain** | Add your domain in Vercel/Cloudflare settings |
 | **Change theme** | Visitors can choose their favorite theme on load |
+| **GitHub Pages** | Use the new GitHub Actions workflow for automatic deployment |
 
 ---
 
@@ -308,6 +370,58 @@ export const userProfile = {
 
 </details>
 
+<details>
+<summary><b>方案 D：GitHub Pages（直接集成）</b></summary>
+
+1. 进入你的仓库 **Settings（设置）** → **Pages（页面）**
+2. 在 **Source（源）** 下，选择 **GitHub Actions**
+3. 在你的仓库中创建 `.github/workflows/deploy.yml` 文件：
+
+```yaml
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build
+      run: npm run build
+    
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      if: github.ref == 'refs/heads/main'
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist
+```
+
+4. 提交工作流文件
+5. 进入 **Actions（操作）** 标签页，等待工作流完成
+6. **完成！** 你的网站将在 `https://你的用户名.github.io/你的仓库名` 上线
+
+**专业提示：** 每当你推送更改到主分支时，GitHub Pages 会自动重新构建！
+
+</details>
+
 ---
 
 ### 实用技巧
@@ -319,6 +433,7 @@ export const userProfile = {
 | **添加项目** | 在 `projects` 数组中添加项目 |
 | **自定义域名** | 在 Vercel/Cloudflare 设置中添加你的域名 |
 | **切换主题** | 访客可以在加载时选择他们喜欢的主题 |
+| **GitHub Pages** | 使用新的 GitHub Actions 工作流实现自动部署 |
 
 ---
 
@@ -380,6 +495,23 @@ npm run build
 ```
 
 **技术栈：** React 18 + TypeScript + Vite + Tailwind CSS + Framer Motion
+
+## 🔄 更新日志 (Changelog)
+
+### v1.1.0 (2025-11-28)
+- ✨ 新增 GitHub Pages 一键部署支持
+- 📝 完善部署文档，新增 GitHub Actions 工作流配置
+- 🛠️ 优化 Vite 配置，支持 GitHub Pages 路径
+- 🎨 更新 README 文档结构
+- 📦 版本号升级至 1.1.0
+
+### v1.0.0 (2025-11-28)
+- 🎉 初始版本发布
+- 🎨 三种主题风格：复古、MacOS、Linux
+- 📱 完全响应式设计
+- ⚡ 基于 Vite 的快速构建
+- 🎯 零代码配置，只需修改 config.ts
+- 🚀 支持 Vercel、Cloudflare Pages、Netlify 部署
 
 ---
 
