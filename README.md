@@ -228,6 +228,7 @@ jobs:
 3. **Important:** Also check **Settings** → **Pages** → **Build and deployment** → **Source** is set to **GitHub Actions**
 4. If problems persist, the workflow now uses GitHub's official deployment actions which should resolve most permission issues
 5. For detailed troubleshooting, see [GitHub Pages Troubleshooting Guide](GITHUB_PAGES_TROUBLESHOOTING.md)
+6. **Images not showing?** See [GitHub Pages Assets Guide](GITHUB_PAGES_ASSETS_GUIDE.md) for picture resource path fixes
 
 </details>
 
@@ -465,6 +466,7 @@ jobs:
 3. **重要：** 同时检查 **Settings（设置）** → **Pages（页面）** → **Build and deployment（构建和部署）** → **Source（源）** 设置为 **GitHub Actions**
 4. 如果问题仍然存在，现在的工作流使用了 GitHub 的官方部署 actions，应该能解决大部分权限问题
 5. 详细故障排除请参考 [GitHub Pages 故障排除指南](GITHUB_PAGES_TROUBLESHOOTING.md)
+6. **图片不显示？** 请参考 [GitHub Pages 资源指南](GITHUB_PAGES_ASSETS_GUIDE.md) 获取图片路径修复方案
 
 </details>
 
@@ -553,6 +555,7 @@ npm run build
 - 🐛 修复 Tailwind CSS 生产构建配置问题
 - 🔧 修复资源路径和样式加载问题
 - 🎯 **重要修复**: 降级 Tailwind CSS v4→v3，完全恢复自定义样式兼容性
+- 📸 **新增**: 静态资源路径工具函数，完美解决 GitHub Pages 图片显示问题
 - 🎯 **重要修复**: 降级 Tailwind CSS v4→v3，完全恢复自定义样式兼容性
 - 🐛 修复 Tailwind CSS 生产构建配置问题
 - 🔧 修复资源路径和样式加载问题
