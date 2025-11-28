@@ -13,6 +13,13 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
+    // Prevent duplicate execution in React Strict Mode
+    const hasBooted = sessionStorage.getItem('terminalLock_booted');
+    if (hasBooted) {
+      setBootSequence(false);
+      return;
+    }
+
     // Initial Boot Sequence Animation
     const bootLines = [
       "BIOS Date 01/15/24 14:23:55 Ver: 1.0.2",
@@ -30,18 +37,34 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
       " ",
     ];
 
+    const timeouts: NodeJS.Timeout[] = [];
     let delay = 0;
+    
     bootLines.forEach((line, index) => {
       delay += Math.random() * 300 + 50;
-      setTimeout(() => {
-        setHistory(prev => [...prev, line]);
+      const timeout = setTimeout(() => {
+        setHistory(prev => {
+          // Prevent duplicate lines
+          if (prev.includes(line)) {
+            return prev;
+          }
+          return [...prev, line];
+        });
+        
         if (index === bootLines.length - 1) {
           setBootSequence(false);
+          sessionStorage.setItem('terminalLock_booted', 'true');
           // Focus input after boot
           setTimeout(() => inputRef.current?.focus(), 100);
         }
       }, delay);
+      timeouts.push(timeout);
     });
+
+    // Cleanup function to clear all timeouts
+    return () => {
+      timeouts.forEach(timeout => clearTimeout(timeout));
+    };
   }, []);
 
   useEffect(() => {
