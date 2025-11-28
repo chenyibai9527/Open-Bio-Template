@@ -11,14 +11,37 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
   const [bootSequence, setBootSequence] = useState(true);
   const bottomRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+  const bootStartedRef = useRef(false);
+
+  // Reset function for debugging
+  const resetBootSequence = () => {
+    sessionStorage.removeItem('terminalLock_booted');
+    sessionStorage.removeItem('terminalLock_boot_in_progress');
+    sessionStorage.removeItem('openbio-boot-completed'); // Also clear the alternative key
+    setHistory([]);
+    setBootSequence(true);
+    bootStartedRef.current = false;
+    window.location.reload();
+  };
 
   useEffect(() => {
-    // Prevent duplicate execution in React Strict Mode
+    // Enhanced duplicate prevention for React StrictMode
     const hasBooted = sessionStorage.getItem('terminalLock_booted');
-    if (hasBooted) {
+    const bootInProgress = sessionStorage.getItem('terminalLock_boot_in_progress');
+    
+    if (hasBooted === 'true') {
+      console.log('TerminalLock: Boot already completed, skipping');
       setBootSequence(false);
       return;
     }
+    
+    if (bootInProgress === 'true') {
+      console.log('TerminalLock: Boot already in progress, skipping');
+      return;
+    }
+    
+    console.log('TerminalLock: Starting boot sequence');
+    sessionStorage.setItem('terminalLock_boot_in_progress', 'true');
 
     // Initial Boot Sequence Animation
     const bootLines = [
@@ -39,21 +62,34 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
 
     const timeouts: NodeJS.Timeout[] = [];
     let delay = 0;
+    let completedLines = 0;
     
     bootLines.forEach((line, index) => {
       delay += Math.random() * 300 + 50;
       const timeout = setTimeout(() => {
+        // Double-check prevention
+        if (sessionStorage.getItem('terminalLock_booted') === 'true') {
+          console.log(`Line ${index} skipped - boot already marked as complete`);
+          return;
+        }
+        
         setHistory(prev => {
-          // Prevent duplicate lines
+          // Additional duplicate check
           if (prev.includes(line)) {
+            console.log(`Duplicate line ${index} detected, skipping`);
             return prev;
           }
+          console.log(`Adding line ${index}: ${line}`);
           return [...prev, line];
         });
         
+        completedLines++;
+        
         if (index === bootLines.length - 1) {
+          console.log('Boot sequence completed successfully');
           setBootSequence(false);
           sessionStorage.setItem('terminalLock_booted', 'true');
+          sessionStorage.removeItem('terminalLock_boot_in_progress');
           // Focus input after boot
           setTimeout(() => inputRef.current?.focus(), 100);
         }
@@ -61,9 +97,11 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
       timeouts.push(timeout);
     });
 
-    // Cleanup function to clear all timeouts
+    // Enhanced cleanup function
     return () => {
+      console.log('Cleaning up boot sequence timeouts');
       timeouts.forEach(timeout => clearTimeout(timeout));
+      // Don't remove the in_progress flag here as it might be a React re-render
     };
   }, []);
 
@@ -149,6 +187,14 @@ const TerminalLock: React.FC<TerminalLockProps> = ({ onUnlock }) => {
         {/* Footer */}
         <div className="mt-4 text-center text-[#33ff33]/40 text-sm uppercase tracking-widest font-bold">
             SECURE CONNECTION // PORT 22 // SSH-2.0-OpenSSH_8.9
+            {/* Hidden reset button for debugging - triple click to reset */}
+            <span 
+              className="ml-4 cursor-pointer opacity-0 hover:opacity-20" 
+              onClick={resetBootSequence}
+              title="Triple click to reset boot sequence"
+            >
+              [RESET]
+            </span>
         </div>
       </div>
     </div>

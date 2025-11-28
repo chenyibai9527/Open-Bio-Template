@@ -8,6 +8,7 @@ import Spotlight from './OS/Spotlight';
 import AboutApp from './apps/AboutApp';
 import ProjectsApp from './apps/ProjectsApp';
 import SettingsApp from './apps/SettingsApp';
+import { getAssetUrl, assetUrls } from '../utils/assetPaths';
 import TerminalApp from './apps/TerminalApp';
 import ContactApp from './apps/ContactApp';
 
@@ -24,20 +25,20 @@ const RealMacOSIcon: React.FC<{ appId: AppID; size: number }> = ({ appId, size }
   
   switch (appId) {
     case 'terminal':
-      src = "/terminal.png";
+      src = assetUrls.terminal;
       break;
     case 'settings':
-      src = "/preferences.png";
+      src = assetUrls.preferences;
       break;
     case 'projects':
-      src = "/projects.png";
+      src = assetUrls.projects;
       break;
     case 'about':
     case 'about_mac':
-      src = "/about.png";
+      src = assetUrls.about;
       break;
     case 'contact':
-      src = "/mail.png";
+      src = assetUrls.mail;
       break;
     default:
       return <div style={{ width: size, height: size }} className="bg-gray-400 rounded-[22%]" />;
@@ -68,7 +69,7 @@ const AppIcon: React.FC<{ appId: AppID; icon: any; theme: Theme; size?: number }
 const MacOSFolderIcon: React.FC = () => (
   <div className="w-[4rem] h-[3.2rem] flex items-center justify-center transition-transform active:scale-95 group pointer-events-none">
     <img 
-      src="/folders.png" 
+      src={assetUrls.folders} 
       alt="Folder"
       className="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]"
     />
@@ -79,7 +80,7 @@ const MacOSFolderIcon: React.FC = () => (
 const AboutMacContent: React.FC = () => (
   <div className="flex flex-col items-center justify-center p-8 text-center bg-transparent h-full font-sans">
     <div className="w-24 h-24 mb-4 flex items-center justify-center">
-       <img src="/about.png" alt="Finder" className="w-full h-full object-contain drop-shadow-xl" />
+       <img src={assetUrls.about} alt="Finder" className="w-full h-full object-contain drop-shadow-xl" />
     </div>
     <h2 className="text-2xl font-bold text-gray-900 mb-1">OpenBio Dev Hub</h2>
     <p className="text-gray-500 text-xs mb-8 font-medium">Version 14.2.1 (Web Build)</p>
