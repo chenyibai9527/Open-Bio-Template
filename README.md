@@ -225,7 +225,9 @@ jobs:
 **Troubleshooting:** If you still get permission errors, make sure:
 1. Go to repository **Settings** → **Actions** → **General** → **Workflow permissions**
 2. Select **Read and write permissions** and **Allow GitHub Actions to create and approve pull requests**
-3. If problems persist, try the [alternative workflow](.github/workflows/deploy-alternative.yml) using GitHub's official actions
+3. **Important:** Also check **Settings** → **Pages** → **Build and deployment** → **Source** is set to **GitHub Actions**
+4. If problems persist, the workflow now uses GitHub's official deployment actions which should resolve most permission issues
+5. For detailed troubleshooting, see [GitHub Pages Troubleshooting Guide](GITHUB_PAGES_TROUBLESHOOTING.md)
 
 </details>
 
@@ -459,8 +461,10 @@ jobs:
 
 **故障排除：** 如果你仍然遇到权限错误，请确保：
 1. 进入仓库 **Settings（设置）** → **Actions（操作）** → **General（常规）** → **Workflow permissions（工作流权限）**
-2. 选择 **Read and write permissions（读写权限）** 和 **Allow GitHub Actions to create and approve pull requests（允许 GitHub Actions 创建和批准拉取请求）**
-3. 如果问题仍然存在，尝试使用 [替代工作流](.github/workflows/deploy-alternative.yml)（使用 GitHub 官方 actions）
+2. 选择 **Read and write permissions（读写权限）** 和 **Allow GitHub Actions to create和批准拉取请求）**
+3. **重要：** 同时检查 **Settings（设置）** → **Pages（页面）** → **Build and deployment（构建和部署）** → **Source（源）** 设置为 **GitHub Actions**
+4. 如果问题仍然存在，现在的工作流使用了 GitHub 的官方部署 actions，应该能解决大部分权限问题
+5. 详细故障排除请参考 [GitHub Pages 故障排除指南](GITHUB_PAGES_TROUBLESHOOTING.md)
 
 </details>
 
